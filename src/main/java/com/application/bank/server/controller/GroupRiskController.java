@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3500", maxAge = 3600)
 @RestController //все методы контроллера возвращают json
-@RequestMapping("/group-risk")
+@RequestMapping("/groups")
 public class GroupRiskController
 {
     @Autowired
@@ -24,6 +25,7 @@ public class GroupRiskController
 
 
     //                  ГРУППЫ РИСКА (ГР)
+
 //                              получить все ГР
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
@@ -31,16 +33,17 @@ public class GroupRiskController
     {
         return riskGroupRepository.findAll();
     }
+
     //                          получить ГР по id
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
     public RiskGroup getRiskGroup(@PathVariable long id)
     {
         return riskGroupRepository.findById(id).get();
     }
 
-    //                          сохранить/добавить группу риска
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    //                          сохранить группу риска
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
     public RiskGroup saveRiskGroup(@RequestBody RiskGroup riskGroup)
     {
@@ -48,10 +51,10 @@ public class GroupRiskController
     }
 
     //                          удалить группу риска
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    @ResponseBody
-    public void deleteRiskGroup(@PathVariable long id)
-    {
-        riskGroupRepository.deleteById(id);
-    }
+//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+//    @ResponseBody
+//    public void deleteRiskGroup(@PathVariable long id)
+//    {
+//        riskGroupRepository.deleteById(id);
+//    }
 }

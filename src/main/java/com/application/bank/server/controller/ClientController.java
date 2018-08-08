@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3500", maxAge = 3600)
 @RestController //все методы контроллера возвращают json
 @RequestMapping("/clients")
 public class ClientController
@@ -35,26 +36,36 @@ public class ClientController
         return clientRepository.findAll();
     }
 //                          получить клиента по id
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+//    @ResponseBody
+//    public Client getClient(@PathVariable long id)
+//    {
+//        return clientRepository.findById(id).get();
+//    }
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Client getClient(@PathVariable long id)
+    public Client getClient(@PathVariable("id") long clientId)
     {
-        return clientRepository.findById(id).get();
+        return clientRepository.findById(clientId).get();
     }
 
 //                          сохранить/добавить клиента
-// возможно, в этом методе косяк...
+// возможно, в этом методе ошибка...
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
+//    public Client saveClient(@RequestBody Client client)
+//    {
+//        Client addClient = clientRepository.saveAndFlush(client);
+//        RiskGroupHistoryChange rghc = new RiskGroupHistoryChange();
+//        rghc.setClient(addClient);
+//        rghc.setJoinDate(new Date());
+//        rghc.setRiskGroup(riskGroupRepository.findById(client.getId()).get());
+//        historyReposotory.saveAndFlush(client);
+//        return client;
+//    }
     public Client saveClient(@RequestBody Client client)
     {
-        Client addClient = clientRepository.saveAndFlush(client);
-        RiskGroupHistoryChange rghc = new RiskGroupHistoryChange();
-        rghc.setClient(addClient);
-        rghc.setJoinDate(new Date());
-        rghc.setRiskGroup(riskGroupRepository.findById(client.getId()).get());
-        historyReposotory.saveAndFlush(client);
-        return client;
+        return clientRepository.saveAndFlush(client);
     }
 
 //                          удалить клиента
@@ -62,7 +73,7 @@ public class ClientController
     @ResponseBody
     public void deleteClient(@PathVariable long id)
     {
-        clientRepository.deleteById(id);
+//        clientRepository.deleteById(id);
+        clientRepository.delete(clientRepository.findById(id).get());
     }
-
 }
