@@ -37,6 +37,7 @@ public class ClientController
     {
         return clientRepository.findAll();
     }
+    
 //                          получить клиента по id
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
