@@ -15,7 +15,7 @@ public class Client
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private long id;
+    private long client_id;
 
 //                 ФИО клиента
 //    @Column(name = "last_name", nullable = false, length = 30)
@@ -50,26 +50,38 @@ public class Client
 //    private String email;
 
 //    // отношение один ко многим. Клиент в "Истории Изменений" может состоять в нескольких группах
-//    @OneToMany
-//    private Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList;
-//
+    @JsonIgnore
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
+    private Collection<RiskGroupHistoryChange> historyChange;
+
 //    public Collection<RiskGroupHistoryChange> getRiskGroupHistoryChangeList()
 //    {
-//        return riskGroupHistoryChangeList;
+//        return historyChange;
 //    }
 //
-//    public void setRiskGroupHistoryChangeList(Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList) {
-//        this.riskGroupHistoryChangeList = riskGroupHistoryChangeList;
+//    public void setRiskGroupHistoryChangeList
+//            (Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList)
+//    {
+//        this.historyChange = riskGroupHistoryChangeList;
 //    }
+
+
+    public Collection<RiskGroupHistoryChange> getHistoryChange() {
+        return historyChange;
+    }
+
+    public void setHistoryChange(Collection<RiskGroupHistoryChange> historyChange) {
+        this.historyChange = historyChange;
+    }
 
     public Client() {}
 
     public long getId() {
-        return id;
+        return client_id;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.client_id = id;
     }
 //
 //    public String getLastName() {

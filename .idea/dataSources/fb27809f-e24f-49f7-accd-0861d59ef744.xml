@@ -79,8 +79,8 @@
     <schema id="18" parent="3" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2018-08-07.17:31:20.559</IntrospectionTimestamp>
-      <IntrospectionStateNumber>1333</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-08-15.11:53:44.237</IntrospectionTimestamp>
+      <IntrospectionStateNumber>1454</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -127,149 +127,197 @@
       <Type>index</Type>
     </access-method>
     <table id="25" parent="18" name="client">
-      <ObjectId>18023</ObjectId>
-      <StateNumber>1332</StateNumber>
+      <ObjectId>18225</ObjectId>
+      <StateNumber>1453</StateNumber>
     </table>
-    <table id="26" parent="18" name="risk_group_history_change">
-      <ObjectId>18028</ObjectId>
-      <StateNumber>1333</StateNumber>
+    <table id="26" parent="18" name="history_change">
+      <ObjectId>18230</ObjectId>
+      <StateNumber>1454</StateNumber>
     </table>
-    <table id="27" parent="18" name="riskgroup">
-      <ObjectId>18033</ObjectId>
-      <StateNumber>1333</StateNumber>
+    <table id="27" parent="18" name="risk_group_history_change">
+      <ObjectId>18179</ObjectId>
+      <StateNumber>1430</StateNumber>
     </table>
-    <column id="28" parent="25" name="id">
+    <table id="28" parent="18" name="riskgroup">
+      <ObjectId>18235</ObjectId>
+      <StateNumber>1454</StateNumber>
+    </table>
+    <column id="29" parent="25" name="client_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1329</StateNumber>
+      <StateNumber>1450</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="29" parent="25" name="first_name">
-      <Position>2</Position>
-      <DataType>varchar(30)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1329</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="30" parent="25" name="pasport_number">
-      <Position>3</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1329</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="31" parent="25" name="risk_group">
-      <Position>4</Position>
-      <DataType>varchar(30)|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1329</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <index id="32" parent="25" name="client_pkey">
-      <ObjectId>18026</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="33" parent="25" name="client_pkey">
-      <ObjectId>18027</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>client_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="34" parent="26" name="id">
-      <Position>1</Position>
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>1330</StateNumber>
-      <TypeId>20</TypeId>
-    </column>
-    <column id="35" parent="26" name="join_date">
+    <column id="30" parent="25" name="dob">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1330</StateNumber>
+      <StateNumber>1450</StateNumber>
       <TypeId>1114</TypeId>
     </column>
-    <column id="36" parent="26" name="client">
+    <column id="31" parent="25" name="first_name">
       <Position>3</Position>
-      <DataType>bigint|0s</DataType>
+      <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1330</StateNumber>
-      <TypeId>20</TypeId>
+      <StateNumber>1450</StateNumber>
+      <TypeId>1043</TypeId>
     </column>
-    <column id="37" parent="26" name="risk_group">
+    <column id="32" parent="25" name="pasport_number">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1330</StateNumber>
+      <StateNumber>1450</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <index id="38" parent="26" name="risk_group_history_change_pkey">
-      <ObjectId>18031</ObjectId>
+    <column id="33" parent="25" name="risk_group">
+      <Position>5</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1450</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="34" parent="25" name="client_pkey">
+      <ObjectId>18228</ObjectId>
+      <ColNames>client_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="25" name="client_pkey">
+      <ObjectId>18229</ObjectId>
+      <ColNames>client_id</ColNames>
+      <UnderlyingIndexName>client_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1451</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="37" parent="26" name="joindate">
+      <Position>2</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1451</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="38" parent="26" name="client_id">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>1451</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="39" parent="26" name="group_id">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>1451</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="40" parent="26" name="history_change_pkey">
+      <ObjectId>18233</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="26" name="risk_group_history_change_pkey">
-      <ObjectId>18032</ObjectId>
+    <key id="41" parent="26" name="history_change_pkey">
+      <ObjectId>18234</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>history_change_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="26" name="fkluivd6yxnw8hwm83b4w57m1nj">
+      <ObjectId>18240</ObjectId>
+      <ColNames>client_id</ColNames>
+      <RefTableId>18225</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>client</RefTableName>
+      <RefKeyName>client_pkey</RefKeyName>
+      <RefColNames>client_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="43" parent="26" name="fkhg3q657ludm8esm9orxadvpxk">
+      <ObjectId>18245</ObjectId>
+      <ColNames>group_id</ColNames>
+      <RefTableId>18235</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>riskgroup</RefTableName>
+      <RefKeyName>riskgroup_pkey</RefKeyName>
+      <RefColNames>group_id</RefColNames>
+    </foreign-key>
+    <column id="44" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1427</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="45" parent="27" name="join_date">
+      <Position>2</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1427</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="46" parent="27" name="client">
+      <Position>3</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1427</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <column id="47" parent="27" name="risk_group">
+      <Position>4</Position>
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>1427</StateNumber>
+      <TypeId>20</TypeId>
+    </column>
+    <index id="48" parent="27" name="risk_group_history_change_pkey">
+      <ObjectId>18182</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="49" parent="27" name="risk_group_history_change_pkey">
+      <ObjectId>18183</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>risk_group_history_change_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="40" parent="26" name="fkslmrod6uc8rhdwg09ks9t4fkx">
-      <ObjectId>18038</ObjectId>
-      <ColNames>client</ColNames>
-      <RefTableId>18023</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>client</RefTableName>
-      <RefKeyName>client_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="41" parent="26" name="fkgfg70ch5r3rrr21tisgombm34">
-      <ObjectId>18043</ObjectId>
-      <ColNames>risk_group</ColNames>
-      <RefTableId>18033</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>riskgroup</RefTableName>
-      <RefKeyName>riskgroup_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="42" parent="27" name="id">
+    <column id="50" parent="28" name="group_id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1331</StateNumber>
+      <StateNumber>1452</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <column id="43" parent="27" name="group_name">
+    <column id="51" parent="28" name="group_name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1331</StateNumber>
+      <StateNumber>1452</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="44" parent="27" name="lower_limit">
+    <column id="52" parent="28" name="lower_limit">
       <Position>3</Position>
       <DataType>double precision|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1331</StateNumber>
+      <StateNumber>1452</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="45" parent="27" name="upper_limit">
+    <column id="53" parent="28" name="upper_limit">
       <Position>4</Position>
       <DataType>double precision|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1331</StateNumber>
+      <StateNumber>1452</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <index id="46" parent="27" name="riskgroup_pkey">
-      <ObjectId>18036</ObjectId>
-      <ColNames>id</ColNames>
+    <index id="54" parent="28" name="riskgroup_pkey">
+      <ObjectId>18238</ObjectId>
+      <ColNames>group_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="47" parent="27" name="riskgroup_pkey">
-      <ObjectId>18037</ObjectId>
-      <ColNames>id</ColNames>
+    <key id="55" parent="28" name="riskgroup_pkey">
+      <ObjectId>18239</ObjectId>
+      <ColNames>group_id</ColNames>
       <UnderlyingIndexName>riskgroup_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>

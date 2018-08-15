@@ -14,7 +14,7 @@ public class RiskGroup
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    private long id;
+    private long group_id;
 //                          название группы риска
     @Column(name = "group_name", nullable = false, length = 30)
     private String groupName;
@@ -26,29 +26,31 @@ public class RiskGroup
     private double upperLimit;
 
 //    // отношение один ко многим. Группа риска в "Истории Изменений" может содержать нескольких клиентов
-//    @OneToMany(mappedBy = "RiskGroup", fetch = FetchType.EAGER)
-//    @JsonIgnore
-//    private Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList;
-//
-//
-//
-//    public Collection<RiskGroupHistoryChange> getRiskGroupHistoryChangeList() {
-//        return riskGroupHistoryChangeList;
-//    }
-//
-//    public void setRiskGroupHistoryChangeList
-//            (Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList) {
-//        this.riskGroupHistoryChangeList = riskGroupHistoryChangeList;
-//    }
+    @JsonIgnore
+    @OneToMany(mappedBy = "riskGroup", fetch = FetchType.EAGER)
+    private Collection<RiskGroupHistoryChange> historyChange;
+
+
+
+    public Collection<RiskGroupHistoryChange> getRiskGroupHistoryChangeList()
+    {
+        return historyChange;
+    }
+
+    public void setRiskGroupHistoryChangeList
+            (Collection<RiskGroupHistoryChange> riskGroupHistoryChangeList)
+    {
+        this.historyChange = riskGroupHistoryChangeList;
+    }
 
     public RiskGroup() {}
 
     public long getId() {
-        return id;
+        return group_id;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.group_id = id;
     }
 
     public String getGroupName() {

@@ -1,12 +1,13 @@
 package com.application.bank.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "risk_group_history_change")
+@Table(name = "history_change")
 public class RiskGroupHistoryChange
 {
     @Id
@@ -14,15 +15,20 @@ public class RiskGroupHistoryChange
     @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
 
-    @JoinColumn(name = "client", nullable = false)
+    @JsonIgnore
+//    @JoinColumn(name = "Client", nullable = false)
+    @JoinColumn(name = "client_id")
     @ManyToOne
     private Client client;
 
-    @JoinColumn(name = "risk_group", nullable = false)
+    @JsonIgnore
+//    @JoinColumn(name = "RiskGroup", nullable = false)
+    @JoinColumn(name = "group_id")
     @ManyToOne
     private RiskGroup riskGroup;
 
-    @Column(name = "join_date", nullable = false)
+    @Column(name = "JoinDate", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date joinDate;
 
 

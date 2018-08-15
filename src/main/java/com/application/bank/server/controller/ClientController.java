@@ -9,7 +9,9 @@ import com.application.bank.server.repository.RiskGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import sun.nio.cs.HistoricallyNamedCharset;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class ClientController
     private RiskGroupRepository riskGroupRepository;
 
     @Autowired
-    private RiskGroupHistoryChangeReposotory historyReposotory;
+    private RiskGroupHistoryChangeReposotory historyRepository;
 
 //              КЛИЕНТЫ
 //                          получить всех клиентов
@@ -36,12 +38,7 @@ public class ClientController
         return clientRepository.findAll();
     }
 //                          получить клиента по id
-//    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Client getClient(@PathVariable long id)
-//    {
-//        return clientRepository.findById(id).get();
-//    }
+
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Client getClient(@PathVariable("id") long clientId)
@@ -49,24 +46,15 @@ public class ClientController
         return clientRepository.findById(clientId).get();
     }
 
-//                          сохранить/добавить клиента
-// возможно, в этом методе ошибка...
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//                          сохранить клиента
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     @ResponseBody
-//    public Client saveClient(@RequestBody Client client)
-//    {
-//        Client addClient = clientRepository.saveAndFlush(client);
-//        RiskGroupHistoryChange rghc = new RiskGroupHistoryChange();
-//        rghc.setClient(addClient);
-//        rghc.setJoinDate(new Date());
-//        rghc.setRiskGroup(riskGroupRepository.findById(client.getId()).get());
-//        historyReposotory.saveAndFlush(client);
-//        return client;
-//    }
     public Client saveClient(@RequestBody Client client)
     {
         return clientRepository.saveAndFlush(client);
     }
+//                          добавить клиента
 
 //                          удалить клиента
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
@@ -76,4 +64,5 @@ public class ClientController
 //        clientRepository.deleteById(id);
         clientRepository.delete(clientRepository.findById(id).get());
     }
+
 }
